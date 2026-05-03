@@ -1,15 +1,28 @@
-<script>
-    import { fly } from "svelte/transition";
+<script lang="ts">
     import Brick from "../components/Brick.svelte";
     import Masonry from "../components/Masonry.svelte";
-    import data from "../contentTest.json";
     import { filterTypeStore } from "../stores/filterTypeStore";
-    import { quadInOut } from "svelte/easing";
+
+    export let filter: string = "";
+
+    $: filterTypeStore.set(filter);
+
+    const svelteArticles = import.meta.glob(`../articles/*.svelte`, {
+        eager: true,
+    });
+    const data = Object.entries(svelteArticles).map(([path, module]: any) => {
+        return module.meta;
+    });
+
+    function tagURL(tag: string): string {
+        if (["music", "projects", "pictures"].includes(tag)) {
+            return `/${tag}`;
+        } else {
+            return `/tag/${tag}`;
+        }
+    }
 </script>
 
-<!-- svelte-ignore a11y_click_events_have_key_events -->
-<!-- svelte-ignore a11y_missing_attribute -->
-<!-- svelte-ignore a11y_no_static_element_interactions -->
 <Masonry>
     <Brick span={3}>
         <div class="intro-text">
@@ -19,49 +32,40 @@
             </p>
             <p>
                 I’m a physics student trying to understand how computers work, I
-                enjoy listening to <a
-                    class="emph"
-                    onclick={() => {
-                        filterTypeStore.set("music");
-                    }}>music</a
-                >, playing games, taking
-                <a
-                    class="emph"
-                    href="#"
-                    onclick={() => {
-                        filterTypeStore.set("pictures");
-                    }}>pictures</a
-                >, drinking coffee and petting
-                <span class="emph">Kiko</span>
-                (my dog).
+                enjoy listening to <a class="emph" href="/music">music</a>,
+                playing games, taking
+                <a class="emph" href="/pictures">pictures</a>, drinking coffee
+                and petting <span class="emph">Kiko</span> (my dog).
             </p>
             <p>
                 If you're in the mood for some nonsensical rambles, or want to
-                check out my <a
-                    class="emph"
-                    onclick={() => {
-                        filterTypeStore.set("projects");
-                    }}>work</a
-                >, you are in the right place!
+                check out my <a class="emph" href="/projects">work</a>, you are
+                in the right place!
             </p>
         </div>
     </Brick>
 
     {#each data as brick}
         {#if $filterTypeStore == "" || brick.tags.find((elt) => elt == $filterTypeStore) != undefined}
-            <Brick span={brick.span} link={brick.link}>
+            <!--<Brick>
+                <pre>{JSON.stringify(brick, null, 2)}</pre>
+                </Brick>-->
+
+            <Brick
+                name={brick.name}
+                span={brick.span}
+                link={brick.link}
+                noContent={brick.noContent}
+            >
                 <div class={brick.style}>
                     <div class="brick-header">
                         <span>
                             {#each brick.tags as tag, index}
                                 {#if index > 0}
-                                    &middot;
+                                    &nbsp;&middot;
                                 {/if}
-                                <a
-                                    class="brick-tags"
-                                    onclick={() => {
-                                        filterTypeStore.set(tag);
-                                    }}>{tag}</a
+                                <a class="brick-tags" href={tagURL(tag)}
+                                    >{tag}</a
                                 >
                             {/each}
                         </span>

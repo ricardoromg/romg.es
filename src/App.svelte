@@ -1,17 +1,40 @@
 <script>
-    import Masonry from "./components/Masonry.svelte";
-    import Brick from "./components/Brick.svelte";
-    import data from "./contentTest.json";
+    import { Route, router } from "tinro";
     import PageHead from "./components/PageHead.svelte";
     import PageFoot from "./components/PageFoot.svelte";
     import HomeTab from "./tabs/HomeTab.svelte";
-    import { viewStore } from "./stores/viewStore";
+    import Article from "./tabs/Article.svelte";
+    import FourOFour from "./tabs/FourOFour.svelte";
+
+    router.mode.history();
 </script>
 
 <PageHead />
-<section class="main">
-    {#if $viewStore == "HomeTab"}
-        <HomeTab />
-    {/if}
-</section>
+<div class="main">
+    <Route path="/">
+        <HomeTab filter="" />
+    </Route>
+
+    <Route path="/tag/:tag" let:meta>
+        <HomeTab filter={meta.params.tag} />
+    </Route>
+
+    <Route path="/projects" exact>
+        <HomeTab filter="projects" />
+    </Route>
+
+    <Route path="/music" exact>
+        <HomeTab filter="music" />
+    </Route>
+
+    <Route path="/pictures" exact>
+        <HomeTab filter="pictures" />
+    </Route>
+
+    <Route path="/article/:slug" let:meta>
+        {#if !["music", "pictures", "projects"].includes(meta.params.slug)}
+            <Article {meta} />
+        {/if}
+    </Route>
+</div>
 <PageFoot />

@@ -3,25 +3,13 @@
     import { filterTypeStore } from "../stores/filterTypeStore";
 </script>
 
-<!-- svelte-ignore a11y_click_events_have_key_events -->
-<!-- svelte-ignore a11y_missing_attribute -->
-<!-- svelte-ignore a11y_no_static_element_interactions -->
 <section class="top-bar">
-    <a
-        class="page-title"
-        onclick={() => {
-            filterTypeStore.set("");
-        }}
-    >
-        romg.es
-    </a>
+    <a class="page-title" href="/"> romg.es </a>
 
     <div class="navigation-items">
         <a
             class="nav-bar-link"
-            onclick={() => {
-                filterTypeStore.set("projects");
-            }}
+            href="/projects"
             style:font-weight={$filterTypeStore == "projects" ? 600 : "inherit"}
         >
             projects
@@ -29,9 +17,7 @@
         &middot;
         <a
             class="nav-bar-link"
-            onclick={() => {
-                filterTypeStore.set("music");
-            }}
+            href="/music"
             style:font-weight={$filterTypeStore == "music" ? 600 : "inherit"}
         >
             music
@@ -39,9 +25,7 @@
         &middot;
         <a
             class="nav-bar-link"
-            onclick={() => {
-                filterTypeStore.set("pictures");
-            }}
+            href="/pictures"
             style:font-weight={$filterTypeStore == "pictures" ? 600 : "inherit"}
         >
             pictures
