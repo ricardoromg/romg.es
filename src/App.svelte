@@ -36,5 +36,9 @@
             <Article {meta} />
         {/if}
     </Route>
+
+    <Route fallback>
+        <FourOFour />
+    </Route>
 </div>
 <PageFoot />

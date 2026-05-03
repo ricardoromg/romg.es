@@ -1,4 +1,4 @@
-<p>404</p>
+<p class="center"><span id="fof">404</span><span>Page not found.</span></p>
 
 <style>
     #fof {
