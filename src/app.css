@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900");
+
+:root {
+    --text-color: #343237;
+    --text-color-secondary: #767576;
+    --bg-color: #ede5c3;
+    --card-bg: #fef9e6;
+    --transition-speed: 0.25s;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: "Fraunces", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+        "SOFT" 0,
+        "WONK" 0;
+    font-size: 1.25rem;
+    margin: 0;
+    padding: 1rem; /* Moved from :root to body for better behavior */
+}
+
+h1,
+h2,
+h3 {
+    font-weight: normal;
+}
+
+a {
+    color: var(--text-color);
+    display: inline-block;
+    text-decoration: none;
+    transition: all var(--transition-speed);
+}
+
+a:hover {
+    text-decoration: underline wavy;
+    transform: scale(1.05);
+}
+
+/* 3. LAYOUT */
+.main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 2em auto;
+}
+
+.top-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+}
+
+.top-bar .navigation-items {
+    flex: 1;
+}
+
+a.page-title {
+    font-size: 1.5em;
+    font-family: "Fraunces", serif;
+    font-weight: 400;
+    font-style: italic;
+    font-variation-settings:
+        "SOFT" 0,
+        "WONK" 1;
+}
+
+a.page-title:hover {
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.navigation-items > a {
+    font-size: 1em;
+    font-weight: 200;
+}
+
+.nav-bar-social > a {
+    color: var(--text-color-secondary);
+    font-size: 0.7em;
+    font-weight: 200;
+}
+
+.nav-bar-socials > a:hover {
+    color: var(--text-color);
+}
+/* 4. COMPONENTS */
+
+/* Brick Cards */
+.brick-card {
+    background-color: var(--card-bg);
+    overflow: hidden;
+    border-radius: 1em;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.brick-card-anim {
+    transition: all var(--transition-speed) ease-in-out;
+}
+
+.brick-card-anim:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.025);
+}
+
+.brick-card-img img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transition-speed) ease-in-out;
+}
+
+.brick-card-img:hover img {
+    transform: scale(1.05);
+}
+
+.brick-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    opacity: 0.5;
+    transition: opacity var(--transition-speed);
+    padding: 1em;
+    color: var(--text-color-secondary);
+}
+
+.brick-card:hover .brick-header {
+    opacity: 1;
+}
+
+.brick-card-text {
+    padding: 0 1em 1em 1em;
+}
+
+.brick-card-title {
+    padding: 0 1em;
+}
+
+.brick-card-text p:first-child {
+    margin-top: 0;
+}
+.brick-card-text p:last-child {
+    margin-bottom: 0;
+}
+
+.brick-card-text-and-image p {
+    padding: 0 1em;
+}
+
+a.brick-tags {
+    color: var(--text-color-secondary);
+}
+
+a.brick-tags:hover {
+    text-decoration: underline wavy;
+    color: var(--text-color);
+}
+
+a.brick-link {
+    text-decoration: none;
+    transform: none;
+}
+
+/* 5. UTILITIES & SPECIFIC TEXT */
+.intro-text {
+    padding: 1em;
+}
+
+.intro-text p {
+    font-size: 1.4em;
+    line-height: 1.3;
+}
+
+.emph {
+    font-family: "Fraunces", serif;
+    font-weight: 400;
+    font-style: italic;
+    font-variation-settings:
+        "SOFT" 0,
+        "WONK" 1;
+}
+
+.center,
+.bottom {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    place-items: center;
+    flex-grow: 1;
+}
+
+.bottom {
+    font-size: 0.7em;
+    font-weight: 200;
+    color: var(--text-color-secondary);
+    padding: 0.5em;
+}
+
+.bottom p {
+    margin: 0;
+}
