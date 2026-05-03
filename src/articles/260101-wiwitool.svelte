@@ -8,7 +8,7 @@
         title: "",
         text: "Custom Minecraft painting & disc generator",
         image: "/260101-wiwitool/1.png",
-        link: "",
+        link: "/260101-wiwitool/content.svelte",
     };
 </script>
 
