@@ -10,9 +10,11 @@
     const svelteArticles = import.meta.glob(`../articles/*.svelte`, {
         eager: true,
     });
-    const data = Object.entries(svelteArticles).map(([path, module]: any) => {
-        return module.meta;
-    });
+    const data = Object.entries(svelteArticles)
+        .map(([path, module]: any) => {
+            return module.meta;
+        })
+        .reverse();
 
     function tagURL(tag: string): string {
         if (["music", "projects", "pictures"].includes(tag)) {
