@@ -1,6 +1,7 @@
 <script lang="ts">
     import Brick from "../components/Brick.svelte";
     import Masonry from "../components/Masonry.svelte";
+    import StaticTagBricks from "../components/StaticTagBricks.svelte";
     import { filterTypeStore } from "../stores/filterTypeStore";
 
     export let filter: string = "";
@@ -26,26 +27,7 @@
 </script>
 
 <Masonry>
-    <Brick span={3}>
-        <div class="intro-text">
-            <p>
-                Hi! I’m <span class="emph">Ricardo</span> and I’d like to tell you
-                a little about me.
-            </p>
-            <p>
-                I’m a physics student trying to understand how computers work, I
-                enjoy listening to <a class="emph" href="/music">music</a>,
-                playing games, taking
-                <a class="emph" href="/pictures">pictures</a>, drinking coffee
-                and petting <span class="emph">Kiko</span> (my dog).
-            </p>
-            <p>
-                If you're in the mood for some nonsensical rambles, or want to
-                check out my <a class="emph" href="/projects">work</a>, you are
-                in the right place!
-            </p>
-        </div>
-    </Brick>
+    <StaticTagBricks filter={$filterTypeStore} />
 
     {#each data as brick}
         {#if $filterTypeStore == "" || brick.tags.find((elt) => elt == $filterTypeStore) != undefined}
