@@ -30,7 +30,7 @@
     <StaticTagBricks filter={$filterTypeStore} />
 
     {#each data as brick}
-        {#if $filterTypeStore == "" || brick.tags.find((elt) => elt == $filterTypeStore) != undefined}
+        {#if $filterTypeStore == "" || (brick.tags != undefined && brick.tags.find((elt) => elt == $filterTypeStore) != undefined)}
             <!--<Brick>
                 <pre>{JSON.stringify(brick, null, 2)}</pre>
                 </Brick>-->
