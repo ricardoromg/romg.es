@@ -5,9 +5,3 @@
     </p>
 </section>
 
-<style>
-    #KFD {
-        height: 1rem;
-        margin: -0.2rem 0;
-    }
-</style>

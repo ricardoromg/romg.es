@@ -207,3 +207,8 @@ a.brick-link {
 .bottom p {
     margin: 0;
 }
+
+#KFDfooter {
+    height: 1rem;
+    margin: -0.2rem 0;
+}
