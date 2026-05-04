@@ -10,7 +10,7 @@
 </script>
 
 <PageHead />
-<div class="main">
+<div class="main" style="--max-app-width: {MAX_APP_WIDTH}px">
     <Route path="/">
         <HomeTab filter="" />
     </Route>
