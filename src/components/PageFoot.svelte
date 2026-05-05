@@ -1,13 +1,10 @@
+<script>
+    import Image from "./Image.svelte";
+</script>
+
 <section class="bottom">
     <p>
         &copy; 2026 - <a href="https://romg.es">romg.es</a>
-        <img id="KFD" src="/favicon.svg" alt="a tiny rubber duck" />
+        <Image id="KFDfooter" src="/favicon.svg" alt="A tiny rubber duck" />
     </p>
 </section>
-
-<style>
-    #KFD {
-        height: 1rem;
-        margin: -0.2rem 0;
-    }
-</style>

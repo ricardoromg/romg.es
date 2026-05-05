@@ -1,5 +1,6 @@
 <script lang="ts">
     import Brick from "../components/Brick.svelte";
+    import Image from "../components/Image.svelte";
     import Masonry from "../components/Masonry.svelte";
     import StaticTagBricks from "../components/StaticTagBricks.svelte";
     import { filterTypeStore } from "../stores/filterTypeStore";
@@ -69,7 +70,7 @@
                     {/if}
 
                     {#if brick.image != undefined && brick.image != ""}
-                        <img src={brick.image} />
+                        <Image src={brick.image} />
                     {/if}
                 </div>
             </Brick>
