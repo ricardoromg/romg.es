@@ -90,12 +90,6 @@
         return Promise.all(promises);
     }
 
-    function cssPixelValue(pixels: string) {
-        // "432px" => 432
-        let match = pixels.match(/.*\.px/g);
-        return match ? Number.parseFloat(match[0]) : 0;
-    }
-
     async function layout({
         colGap,
         items,
