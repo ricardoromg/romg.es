@@ -1,12 +1,16 @@
 <!-- Attribution: https://css-tricks.com/making-a-masonry-layout-that-works-today/ -->
 
 <script lang="ts">
-    import { onMount, onDestroy } from "svelte"; // Added onDestroy
+    import { onMount, onDestroy, setContext } from "svelte";
+    import { writable } from "svelte/store";
 
     export let brickMinWidth: number = 200;
+    let masonryWidth: number = 200;
     let masonryLayout: HTMLDivElement;
     let observer: ResizeObserver;
-    let mutationObserver: MutationObserver; // Added this
+    let mutationObserver: MutationObserver;
+    const columnCount = writable();
+    setContext("masonry", { columnCount });
 
     onMount(() => {
         reloadLayout();
@@ -65,9 +69,9 @@
     async function areImagesLoaded(container: HTMLElement) {
         const images = Array.from(container.querySelectorAll("img"));
         const promises = images.map((img) => {
-            return new Promise((resolve, reject) => {
+            return new Promise<void>((resolve, reject) => {
                 if (img.complete) return resolve();
-                img.onload = resolve;
+                img.onload = () => resolve();
                 img.onerror = reject;
             });
         });
@@ -77,9 +81,9 @@
     function areVideosLoaded(container: HTMLElement) {
         const videos = Array.from(container.querySelectorAll("video"));
         const promises = videos.map((video) => {
-            return new Promise((resolve, reject) => {
+            return new Promise<void>((resolve, reject) => {
                 if (video.readyState === 4) return resolve(); // HAVE_ENOUGH_DATA
-                video.onloadedmetadata = resolve;
+                video.onloadedmetadata = () => resolve();
                 video.onerror = reject;
             });
         });
@@ -93,6 +97,9 @@
         colGap: number;
         items: HTMLElement[];
     }) {
+        const computedCols = Math.floor(masonryWidth / brickMinWidth);
+        const clampedCols = Math.max(computedCols, 1);
+        columnCount.set(clampedCols);
         const rowHeight = 1;
         masonryLayout.style.gridAutoRows = `${rowHeight}px`;
 
@@ -106,6 +113,7 @@
 
 <div
     bind:this={masonryLayout}
+    bind:clientWidth={masonryWidth}
     class="masonry"
     style={`grid-template-columns: repeat(auto-fit, minmax(min(${brickMinWidth}px, 100%), 1fr));`}
 >
