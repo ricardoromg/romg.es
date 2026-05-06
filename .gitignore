@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+public\*\*-original.png
+public\*\*-original.jpg
+public\*\*-original.jpeg

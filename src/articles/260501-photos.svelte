@@ -6,7 +6,7 @@
         tags: ["pictures"],
         date: "01-05-26",
         text: "04-26 Photo Dump",
-        image: "/260501-photos/1.png",
+        image: "/260501-photos/1.webp",
         noContent: true,
     };
 </script>
