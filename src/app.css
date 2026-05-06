@@ -83,13 +83,13 @@ a.page-title:hover {
     font-weight: 200;
 }
 
-.nav-bar-social > a {
+a.nav-bar-social {
     color: var(--text-color-secondary);
     font-size: 0.7em;
     font-weight: 200;
 }
 
-.nav-bar-socials > a:hover {
+a:hover.nav-bar-socials {
     color: var(--text-color);
 }
 /* 4. COMPONENTS */
@@ -211,4 +211,23 @@ a.brick-link {
 #KFDfooter {
     height: 1rem;
     margin: -0.2rem 0;
+}
+
+.grid-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 10px;
+    grid-auto-rows: auto;
+}
+
+.hamburger-links {
+    margin-top: 20px;
+}
+
+.hamburger-links > div {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    place-items: center;
 }
