@@ -27,6 +27,11 @@ body {
     padding: 1rem; /* Moved from :root to body for better behavior */
 }
 
+button {
+    background-color: transparent;
+    border: none;
+}
+
 h1,
 h2,
 h3 {
