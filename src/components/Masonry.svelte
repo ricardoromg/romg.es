@@ -9,6 +9,7 @@
     let masonryLayout: HTMLDivElement;
     let observer: ResizeObserver;
     let mutationObserver: MutationObserver;
+    let isLoaded: boolean = false;
     const columnCount = writable();
     setContext("masonry", { columnCount });
 
@@ -108,12 +109,14 @@
             const span = Math.ceil((ib.height + colGap) / rowHeight);
             item.style.gridRowEnd = `span ${span}`;
         });
+        isLoaded = true;
     }
 </script>
 
 <div
     bind:this={masonryLayout}
     bind:clientWidth={masonryWidth}
+    class:loaded={isLoaded}
     class="masonry"
     style={`grid-template-columns: repeat(auto-fit, minmax(min(${brickMinWidth}px, 100%), 1fr));`}
 >
@@ -126,5 +129,11 @@
         grid-template-rows: masonry;
         gap: 1rem;
         grid-auto-flow: dense;
+        opacity: 0;
+        transition: opacity var(--transition-time) ease-in;
+    }
+
+    .masonry.loaded {
+        opacity: 1;
     }
 </style>
