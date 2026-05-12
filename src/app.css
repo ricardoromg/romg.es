@@ -4,7 +4,7 @@
 
 :root {
     --text-color: #343237;
-    --text-color-secondary: #444; /* #767576 */
+    --text-color-secondary: #727272; /* #767576 */
     --bg-color: #ede5c3;
     --card-bg: #fef9e6;
     --transition-speed: 0.25s;
@@ -136,7 +136,7 @@ a:hover.nav-bar-socials {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    opacity: 0.5;
+    opacity: 0.7;
     transition: opacity var(--transition-speed);
     padding: 1em;
     color: var(--text-color-secondary);
