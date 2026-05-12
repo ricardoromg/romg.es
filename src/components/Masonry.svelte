@@ -130,10 +130,12 @@
         gap: 1rem;
         grid-auto-flow: dense;
         opacity: 0;
+        visibility: hidden;
         transition: opacity var(--transition-time) ease-in;
     }
 
     .masonry.loaded {
         opacity: 1;
+        visibility: visible;
     }
 </style>
