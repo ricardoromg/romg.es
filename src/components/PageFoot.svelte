@@ -2,7 +2,7 @@
     import Image from "./Image.svelte";
 </script>
 
-<section class="bottom">
+<section class="bottom" role="contentinfo">
     <p>
         &copy; 2026 - <a href="https://romg.es">romg.es</a>
         <img

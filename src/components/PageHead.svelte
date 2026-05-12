@@ -10,7 +10,7 @@
     const growDuration = 100; // in ms
 </script>
 
-<section class="top-bar" bind:clientWidth={windowWidth}>
+<section class="top-bar" bind:clientWidth={windowWidth} role="main">
     <a class="page-title" href="/">romg.es</a>
     {#if windowWidth > minWidth}
         <div class="navigation-items">
