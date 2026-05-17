@@ -1,26 +1,38 @@
 [
   {
-    "src": "/260101-wiwitool/1.webp",
+    "id": 1,
+    "dir": "260101-wiwitool",
+    "original": "1.webp",
     "alt": "A screenshot of the home page of the Wiwitool",
     "width": 1200,
-    "height": 833
+    "height": 835,
+    "sizes": [200, 600, 1200]
   },
   {
-    "src": "/260409-eggInc/1.webp",
+    "id": 1,
+    "dir": "260409-eggInc",
+    "original": "1.webp",
     "alt": "An image of a phone running the game Egg Inc. In it a drone has a box around it, labeled 'drone: 0.80'",
     "width": 356,
-    "height": 724
+    "height": 724,
+    "sizes": [200, 356]
   },
   {
-    "src": "/260501-photos/1.webp",
+    "id": 1,
+    "dir": "260501-photos",
+    "original": "1.webp",
     "alt": "A picture of a square with a fountain and some trees",
     "width": 1200,
-    "height": 1200
+    "height": 1200,
+    "sizes": [200, 600, 1200]
   },
   {
-    "src": "/260501-playlist/1.webp",
+    "id": 1,
+    "dir": "260501-playlist",
+    "original": "1.webp",
     "alt": "A square picure divided into four quadrants, in it we can see the covers for the following albums: Desire I want to turn into you (Everasking Edition) - Caroline Polachek; Pang - Caroline Polachek; Soft Rock - Thy Slaughter; Desire I want to turn into you - Caroline Polachek",
     "width": 640,
-    "height": 640
+    "height": 640,
+    "sizes": [200, 600, 640]
   }
 ]
