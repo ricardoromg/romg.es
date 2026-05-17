@@ -21,7 +21,7 @@ with open(IMAGES_JSON) as f:
 
 for img in imgjson:
     if img["alt"] == "":
-        filepath = os.path.join(img["dir"], img["original"])
+        filepath = os.path.join("images", img["dir"], img["original"])
 
         print(f"Analizing {filepath}...")
 
