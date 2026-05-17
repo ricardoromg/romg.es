@@ -14,7 +14,7 @@
         return str.replaceAll("\\", "/");
     }
 
-    function canonicalSource(image) {
+    function canonicalSource(image: any) {
         return "/" + fixBackslashes(image.dir) + "/" + image.id + ".webp";
     }
 
