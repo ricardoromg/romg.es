@@ -3,6 +3,7 @@
     import Image from "../components/Image.svelte";
     import Masonry from "../components/Masonry.svelte";
     import StaticTagBricks from "../components/StaticTagBricks.svelte";
+    import { tagURL } from "../functions";
     import { filterTypeStore } from "../stores/filterTypeStore";
 
     export let filter: string = "";
@@ -17,14 +18,6 @@
             return module.meta;
         })
         .reverse();
-
-    function tagURL(tag: string): string {
-        if (["music", "projects", "pictures"].includes(tag)) {
-            return `/${tag}`;
-        } else {
-            return `/tag/${tag}`;
-        }
-    }
 
     $: if (filter != "") {
         document.title = `romg.es | ${filter}`;
@@ -43,7 +36,21 @@
     <StaticTagBricks filter={$filterTypeStore} />
 
     {#each data as brick}
-        {#if $filterTypeStore == "" || (brick.tags != undefined && brick.tags.find((elt: any) => elt == $filterTypeStore) != undefined)}
+        {@const allTags =
+            brick.tags == undefined
+                ? []
+                : brick.tags.concat(
+                      brick.secondarytags == undefined
+                          ? []
+                          : brick.secondarytags,
+                  )}
+        {@const tagFound =
+            allTags != undefined &&
+            allTags.find((elt: any) => elt == $filterTypeStore) != undefined}
+        {@const numberOfSecondaryTags =
+            brick.secondarytags == undefined ? 0 : brick.secondarytags.length}
+
+        {#if $filterTypeStore == "" || tagFound}
             <!--<Brick>
                 <pre>{JSON.stringify(brick, null, 2)}</pre>
                 </Brick>-->
@@ -65,6 +72,14 @@
                                     >{tag}</a
                                 >
                             {/each}
+                            {#if numberOfSecondaryTags != 0}
+                                <span
+                                    title={brick.secondarytags.join(", ")}
+                                    class="display-secondary-tags-on-brick"
+                                >
+                                    +{numberOfSecondaryTags}
+                                </span>
+                            {/if}
                         </span>
                         <span>
                             {brick.date}
@@ -89,3 +104,9 @@
         {/if}
     {/each}
 </Masonry>
+
+<style>
+    .display-secondary-tags-on-brick {
+        font-size: 0.7em;
+    }
+</style>

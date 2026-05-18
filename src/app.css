@@ -5,6 +5,7 @@
 :root {
     --text-color: #343237;
     --text-color-secondary: #727272; /* #767576 */
+    --border-color-secondary: #959595;
     --bg-color: #ede5c3;
     --card-bg: #fef9e6;
     --transition-speed: 0.25s;
