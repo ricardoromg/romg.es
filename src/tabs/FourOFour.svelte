@@ -1,3 +1,7 @@
+<script lang="ts">
+    document.title = "romg.es | 404 :(";
+</script>
+
 <p class="center"><span id="fof">404</span><span>Page not found.</span></p>
 
 <style>

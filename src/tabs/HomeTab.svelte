@@ -25,6 +25,18 @@
             return `/tag/${tag}`;
         }
     }
+
+    $: if (filter != "") {
+        document.title = `romg.es | ${filter}`;
+    } else {
+        document.title = `romg.es`;
+    }
+
+    $: if (filter != "") {
+        document.title = `romg.es | ${filter}`;
+    } else {
+        document.title = `romg.es`;
+    }
 </script>
 
 <Masonry>
