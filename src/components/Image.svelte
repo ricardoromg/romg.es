@@ -33,8 +33,8 @@
     $: srcset = availableSizes
         .sort((a, b) => b - a)
         .map((size) => {
-            if (size == width) return `${dir}/${id}.webp ${size}w`;
-            else return `${dir}/${id}-${size}.webp ${size}w`;
+            if (size == width) return `/${dir}/${id}.webp ${size}w`;
+            else return `/${dir}/${id}-${size}.webp ${size}w`;
         })
         .join(", ");
 </script>
