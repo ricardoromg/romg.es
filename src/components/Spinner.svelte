@@ -148,7 +148,7 @@
 
 <style>
     #spinnerComponent {
-        animation: 8s linear infinite spin;
+        animation: 4s linear infinite spin;
     }
 
     @keyframes spin {
