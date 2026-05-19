@@ -33,7 +33,7 @@
 
     <Route path="/article/:slug" let:meta>
         {#if !["music", "pictures", "projects"].includes(meta.params.slug)}
-            <Article {meta} />
+            <Article slug={meta?.params?.slug} />
         {/if}
     </Route>
 

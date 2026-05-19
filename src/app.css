@@ -36,6 +36,21 @@ body {
     font-size: 1.25rem;
     margin: 0;
     padding: 1rem; /* Moved from :root to body for better behavior */
+
+    display: flex;
+    flex-direction: column;
+}
+
+html,
+body {
+    min-height: 100vh;
+}
+
+#app {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
 }
 
 button {
@@ -63,6 +78,7 @@ a:hover {
 
 /* 3. LAYOUT */
 .main {
+    flex: 1;
     width: 100%;
     max-width: var(--max-app-width);
     margin: 2em auto;
@@ -214,8 +230,7 @@ a.brick-link {
         "WONK" 1;
 }
 
-.center,
-.bottom {
+.center {
     display: flex;
     flex-direction: column;
     place-content: center;
@@ -224,6 +239,10 @@ a.brick-link {
 }
 
 .bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
     font-size: 0.7em;
     font-weight: 200;
     color: var(--text-color-secondary);
@@ -235,7 +254,7 @@ a.brick-link {
 }
 
 #KFDfooter {
-    height: 1rem;
+    /*height: 1rem;*/
     margin: -0.2rem 0;
 }
 

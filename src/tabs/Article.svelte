@@ -3,14 +3,12 @@
     import FourOFour from "./FourOFour.svelte";
     import { tagURL } from "../functions";
 
-    export let meta: any = null;
-    $: slug = meta?.params?.slug;
-
-    let info: any;
+    export let slug: string = "";
 
     const articles = import.meta.glob("../articles/*.svelte");
 
     let ArticleContent: any;
+    let meta: any;
     let loaded: boolean = false;
     let allTags: string[];
     let date: string;
@@ -21,9 +19,13 @@
             loader()
                 .then((module: any) => {
                     ArticleContent = module.default;
-                    info = module.meta;
-                    allTags = info.tags.concat(info.secondarytags);
-                    date = info.date;
+                    meta = module.meta;
+
+                    const Tags = meta?.tags || [];
+                    const SecondaryTags = meta?.secondarytags || [];
+                    allTags = Tags.concat(SecondaryTags);
+
+                    date = meta.date;
                 })
                 .finally(() => (loaded = true));
         } else {
@@ -32,10 +34,10 @@
     }
 
     $: if (loaded) {
-        if (info.title != undefined && info.title != "") {
-            document.title = info.title;
-        } else if (info.text != undefined && info.text != "") {
-            document.title = info.text;
+        if (meta?.title != "") {
+            document.title = meta.title;
+        } else if (meta?.text != "") {
+            document.title = meta.text;
         } else {
             document.title = "Article on romg.es";
         }
@@ -54,15 +56,26 @@
         </span>
         <span>{date}</span>
     </span>
-    <svelte:component this={ArticleContent} />
+    <div style={"width: 100%; max-width:900px; margin: 0 auto"}>
+        <svelte:component this={ArticleContent} />
+    </div>
 {:else if loaded}
     <FourOFour />
 {:else}
-    <center><Spinner /></center>
-    <p class="center emph">Loading...</p>
+    <div class="loading">
+        <center><Spinner /></center>
+        <p class="center emph">Loading...</p>
+    </div>
 {/if}
 
 <style>
+    .loading {
+        position: absolute;
+        top: 50vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+    }
+
     .article-topbar {
         color: var(--text-color-secondary);
         display: flex;
