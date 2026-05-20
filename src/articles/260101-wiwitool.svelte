@@ -11,7 +11,7 @@
         title: "The Wiwitool",
         text: "Custom Minecraft painting & disc generator",
         image: "/260101-wiwitool/1.webp",
-        noContent: true,
+        noContent: false,
     };
 </script>
 
