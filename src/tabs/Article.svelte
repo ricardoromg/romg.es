@@ -1,8 +1,8 @@
 <script lang="ts">
+    import { onMount } from "svelte";
     import Spinner from "../components/Spinner.svelte";
     import FourOFour from "./FourOFour.svelte";
     import { tagURL } from "../functions";
-    import { onMount } from "svelte";
 
     export let slug: string = "";
 
