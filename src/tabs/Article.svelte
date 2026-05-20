@@ -13,7 +13,7 @@
     let allTags: string[];
     let date: string;
 
-    $: if (slug) {
+    onMount(() => {
         const loader = articles[`../articles/${slug}.svelte`];
         if (loader) {
             loader()
@@ -31,7 +31,7 @@
         } else {
             loaded = true;
         }
-    }
+    });
 
     $: if (loaded) {
         if (meta?.title != "") {
